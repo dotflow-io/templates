@@ -4,8 +4,10 @@ version = "0.1.0"
 description = ""
 requires-python = ">=3.9"
 dependencies = [
-    "dotflow",
-]
+{% if cookiecutter.storage == "s3" %}    "dotflow[aws]",
+{% elif cookiecutter.storage == "gcs" %}    "dotflow[gcp]",
+{% else %}    "dotflow",
+{% endif %}]
 
 [project.optional-dependencies]
 dev = ["pytest"]
