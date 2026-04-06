@@ -1,0 +1,4 @@
+{
+    "project_name": "my-pipeline",
+    "module_name": "{{ cookiecutter.project_name | replace('-', '_') }}"
+}

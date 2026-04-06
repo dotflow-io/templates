@@ -1,0 +1,11 @@
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.9"
+dependencies = [
+    "dotflow",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
