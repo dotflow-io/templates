@@ -13,6 +13,8 @@ PLACEHOLDERS = {
     "MODULE_NAME": "{{ cookiecutter.module_name }}",
     "AWS_ACCOUNT_ID": "{{ cookiecutter.aws_account_id }}",
     "AWS_REGION": "{{ cookiecutter.aws_region }}",
+    "GCP_PROJECT_ID": "{{ cookiecutter.gcp_project_id }}",
+    "GCP_REGION": "{{ cookiecutter.gcp_region }}",
 }
 
 
