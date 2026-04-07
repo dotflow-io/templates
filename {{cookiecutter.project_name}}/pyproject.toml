@@ -4,8 +4,11 @@ version = "0.1.0"
 description = ""
 requires-python = ">=3.9"
 dependencies = [
-{% if cookiecutter.storage == "s3" %}    "dotflow[aws]",
+{% if cookiecutter.storage == "s3" and cookiecutter.scheduler == "cron" %}    "dotflow[aws,scheduler]",
+{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "cron" %}    "dotflow[gcp,scheduler]",
+{% elif cookiecutter.storage == "s3" %}    "dotflow[aws]",
 {% elif cookiecutter.storage == "gcs" %}    "dotflow[gcp]",
+{% elif cookiecutter.scheduler == "cron" %}    "dotflow[scheduler]",
 {% else %}    "dotflow",
 {% endif %}]
 
