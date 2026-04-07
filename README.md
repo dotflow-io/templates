@@ -40,7 +40,7 @@ dotflow cloud list
 
 ### Available platforms
 
-| `cloud` value | Logo | Platform | Available |
+| Value | Icon | Platform | Available |
 |---|---|---|---|
 | `none` | 🚫 | — | — |
 | `docker` | <img alt="Docker" src="https://cdn.simpleicons.org/docker" width="18" /> | Docker | :white_check_mark: |
