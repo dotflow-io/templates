@@ -17,6 +17,7 @@ spec:
       containers:
         - name: {{K8S_NAME}}
           image: {{K8S_NAME}}:latest
+          imagePullPolicy: Never
           resources:
             requests:
               memory: "256Mi"
