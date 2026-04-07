@@ -8,9 +8,12 @@ CLOUD_URL = "https://raw.githubusercontent.com/dotflow-io/template/master/cloud"
 
 CLOUD = "{{ cookiecutter.cloud }}"
 
+SCHEDULED_PLATFORMS = {"lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled"}
+
 PLACEHOLDERS = {
     "PROJECT_NAME": "{{ cookiecutter.project_name }}",
     "MODULE_NAME": "{{ cookiecutter.module_name }}",
+    "SCHEDULE_EXPRESSION": "{{ cookiecutter.schedule_expression }}",
     "AWS_ACCOUNT_ID": "{{ cookiecutter.aws_account_id }}",
     "AWS_REGION": "{{ cookiecutter.aws_region }}",
     "GCP_PROJECT_ID": "{{ cookiecutter.gcp_project_id }}",

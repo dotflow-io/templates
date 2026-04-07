@@ -24,7 +24,8 @@ You'll be prompted for these options:
 | `execution_mode` | Execution (`sequential`, `parallel`, `background`) |
 | `retry` | Enable retry (`no`, `yes`) |
 | `checkpoint` | Enable checkpointing (`no`, `yes`) |
-| `cloud` | Adds deployment files (`none`, `docker`, `lambda`, `ecs`, `cloud-run`) |
+| `cloud` | Adds deployment files (`none`, `docker`, `lambda`, `lambda-scheduled`, `lambda-s3-trigger`, `lambda-sqs-trigger`, `lambda-api-trigger`, `ecs`, `ecs-scheduled`, `cloud-run`, `cloud-run-scheduled`, `kubernetes`) |
+| `schedule_expression` | Cron or rate expression for scheduled platforms (e.g. `rate(6 hours)`, `cron(0 12 * * ? *)`) |
 
 ## Cloud templates
 
@@ -44,8 +45,14 @@ dotflow cloud list
 | `none` | 🚫 | — | — | No deployment files |
 | `docker` | <img alt="Docker" src="https://cdn.simpleicons.org/docker" width="18" /> | Docker | :white_check_mark: | `Dockerfile` and `docker-compose.yml` |
 | `lambda` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Lambda | :white_check_mark: | Container-based Lambda handler template |
+| `lambda-scheduled` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Lambda + EventBridge Schedule | :white_check_mark: | SAM template with cron/rate trigger |
+| `lambda-s3-trigger` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Lambda + S3 Trigger | :white_check_mark: | SAM template triggered by S3 upload |
+| `lambda-sqs-trigger` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Lambda + SQS Trigger | :white_check_mark: | SAM template triggered by SQS messages |
+| `lambda-api-trigger` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Lambda + API Gateway | :white_check_mark: | SAM template triggered by HTTP POST |
 | `ecs` | <img alt="Amazon ECS" src="https://www.vectorlogo.zone/logos/amazon_ecs/amazon_ecs-icon.svg" width="18" /> | AWS ECS (Fargate) | :white_check_mark: | Task definition template (often paired with Amazon ECR) |
+| `ecs-scheduled` | <img alt="Amazon ECS" src="https://www.vectorlogo.zone/logos/amazon_ecs/amazon_ecs-icon.svg" width="18" /> | AWS ECS + EventBridge Schedule | :white_check_mark: | CloudFormation with scheduled Fargate task |
 | `cloud-run` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Cloud Run | :white_check_mark: | Includes `cloudbuild.yaml` |
+| `cloud-run-scheduled` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Cloud Run + Cloud Scheduler | :white_check_mark: | Includes `cloudbuild.yaml` + `scheduler.yaml` |
 | `kubernetes` | <img alt="Kubernetes" src="https://cdn.simpleicons.org/kubernetes" width="18" /> | Kubernetes | :soon: | Deployment + service manifests |
 | `azure-functions` | <img alt="Microsoft Azure" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" width="18" /> | Azure Functions | :soon: | `function.json` + `host.json` |
 | `azure-container` | <img alt="Microsoft Azure" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" width="18" /> | Azure Container Apps | :soon: | `container-app.yaml` |
