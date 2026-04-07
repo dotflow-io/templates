@@ -1,49 +1,56 @@
-"""Post-generation hook: optionally fetch cloud templates."""
+"""Post-generation hook: fetch cloud templates for the selected platform."""
 
 import json
-import os
 from pathlib import Path
 from urllib.request import urlopen
 
 CLOUD_URL = "https://raw.githubusercontent.com/dotflow-io/template/master/cloud"
 
-PROJECT_DIR = Path(os.getcwd())
-
 CLOUD = "{{ cookiecutter.cloud }}"
-PROJECT_NAME = "{{ cookiecutter.project_name }}"
-MODULE_NAME = "{{ cookiecutter.module_name }}"
-AWS_ACCOUNT_ID = "{{ cookiecutter.aws_account_id }}"
-AWS_REGION = "{{ cookiecutter.aws_region }}"
+
+PLACEHOLDERS = {
+    "PROJECT_NAME": "{{ cookiecutter.project_name }}",
+    "MODULE_NAME": "{{ cookiecutter.module_name }}",
+    "AWS_ACCOUNT_ID": "{{ cookiecutter.aws_account_id }}",
+    "AWS_REGION": "{{ cookiecutter.aws_region }}",
+}
 
 
-def fetch_cloud_templates():
-    """Download cloud infrastructure files for the selected platform."""
+def fetch_registry() -> dict:
+    content = urlopen(f"{CLOUD_URL}/registry.json", timeout=10).read()
+    return json.loads(content)
+
+
+def fetch_file(platform: str, filename: str) -> str:
+    url = f"{CLOUD_URL}/{platform}/{filename}"
+    return urlopen(url, timeout=10).read().decode()
+
+
+def replace_placeholders(content: str) -> str:
+    for key, value in PLACEHOLDERS.items():
+        tag = "{" + "{" + key + "}" + "}"
+        content = content.replace(tag, value)
+    return content
+
+
+def generate_cloud_files():
     if CLOUD == "none":
         return
 
-    registry = json.loads(
-        urlopen(f"{CLOUD_URL}/registry.json", timeout=10).read()
-    )
-
+    registry = fetch_registry()
     platform = registry["platforms"].get(CLOUD)
     if not platform:
         return
 
-    project_tag = "{" + "{PROJECT_NAME}" + "}"
-    module_tag = "{" + "{MODULE_NAME}" + "}"
-    account_tag = "{" + "{AWS_ACCOUNT_ID}" + "}"
-    region_tag = "{" + "{AWS_REGION}" + "}"
+    project_dir = Path.cwd()
 
     for filename in platform["files"]:
-        content = urlopen(f"{CLOUD_URL}/{CLOUD}/{filename}", timeout=10).read().decode()
-        content = content.replace(project_tag, PROJECT_NAME)
-        content = content.replace(module_tag, MODULE_NAME)
-        content = content.replace(account_tag, AWS_ACCOUNT_ID)
-        content = content.replace(region_tag, AWS_REGION)
-        (PROJECT_DIR / filename).write_text(content)
+        content = fetch_file(CLOUD, filename)
+        content = replace_placeholders(content)
+        (project_dir / filename).write_text(content)
 
 
 try:
-    fetch_cloud_templates()
+    generate_cloud_files()
 except Exception as err:
     print(f"Warning: Could not fetch cloud templates: {err}")
