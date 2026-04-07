@@ -1,5 +1,5 @@
 {
-    "project_name": "my-pipeline",
+    "project_name": "my_pipeline",
     "module_name": "{{ cookiecutter.project_name | replace('-', '_') }}",
     "storage": ["default", "file", "s3", "gcs"],
     "scheduler": ["none", "cron"],
