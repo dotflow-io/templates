@@ -12,6 +12,8 @@ PROJECT_DIR = Path(os.getcwd())
 CLOUD = "{{ cookiecutter.cloud }}"
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
 MODULE_NAME = "{{ cookiecutter.module_name }}"
+AWS_ACCOUNT_ID = "{{ cookiecutter.aws_account_id }}"
+AWS_REGION = "{{ cookiecutter.aws_region }}"
 
 
 def fetch_cloud_templates():
@@ -29,11 +31,15 @@ def fetch_cloud_templates():
 
     project_tag = "{" + "{PROJECT_NAME}" + "}"
     module_tag = "{" + "{MODULE_NAME}" + "}"
+    account_tag = "{" + "{AWS_ACCOUNT_ID}" + "}"
+    region_tag = "{" + "{AWS_REGION}" + "}"
 
     for filename in platform["files"]:
         content = urlopen(f"{CLOUD_URL}/{CLOUD}/{filename}", timeout=10).read().decode()
         content = content.replace(project_tag, PROJECT_NAME)
         content = content.replace(module_tag, MODULE_NAME)
+        content = content.replace(account_tag, AWS_ACCOUNT_ID)
+        content = content.replace(region_tag, AWS_REGION)
         (PROJECT_DIR / filename).write_text(content)
 
 
