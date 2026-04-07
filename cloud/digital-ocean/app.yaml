@@ -1,0 +1,9 @@
+name: {{PROJECT_NAME}}
+workers:
+  - name: {{PROJECT_NAME}}
+    dockerfile_path: Dockerfile
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: PYTHONUNBUFFERED
+        value: "1"
