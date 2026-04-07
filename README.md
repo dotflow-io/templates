@@ -62,30 +62,13 @@ dotflow cloud list
 | `render` | <img alt="Render" src="https://cdn.simpleicons.org/render" width="18" /> | Render | :soon: |
 | `digital-ocean` | <img alt="DigitalOcean" src="https://cdn.simpleicons.org/digitalocean" width="18" /> | DigitalOcean App Platform | :soon: |
 
-### Platform details
+## Deploy guides
 
-- **`docker`** — `Dockerfile` and `docker-compose.yml`
-- **`lambda`** — Container-based Lambda handler template
-- **`lambda-scheduled`** — SAM template with EventBridge cron/rate trigger
-- **`lambda-s3-trigger`** — SAM template triggered by S3 file upload
-- **`lambda-sqs-trigger`** — SAM template triggered by SQS messages
-- **`lambda-api-trigger`** — SAM template triggered by HTTP POST via API Gateway
-- **`ecs`** — Task definition template for ECS Fargate (often paired with Amazon ECR)
-- **`ecs-scheduled`** — CloudFormation with EventBridge scheduled Fargate task
-- **`cloud-run`** — Includes `cloudbuild.yaml`
-- **`cloud-run-scheduled`** — Includes `cloudbuild.yaml` + `scheduler.yaml` for Cloud Scheduler
-- **`kubernetes`** — Deployment + service manifests
-- **`azure-functions`** — `function.json` + `host.json`
-- **`azure-container`** — `container-app.yaml`
-- **`heroku`** — `Procfile` + `heroku.yml`
-- **`fly-io`** — `fly.toml`
-- **`railway`** — `railway.json`
-- **`render`** — `render.yaml`
-- **`digital-ocean`** — `app.yaml`
+Each cloud platform has a `README.md` inside its `cloud/<platform>/` folder with step-by-step deploy instructions.
 
 ## Next steps (inside the generated project)
 
-Enter the generated folder and run:
+Run locally without Docker:
 
 ```bash
 pip install -e ".[dev]"
