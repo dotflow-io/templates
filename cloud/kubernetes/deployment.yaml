@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{PROJECT_NAME}}
+  name: {{K8S_NAME}}
   labels:
-    app: {{PROJECT_NAME}}
+    app: {{K8S_NAME}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{PROJECT_NAME}}
+      app: {{K8S_NAME}}
   template:
     metadata:
       labels:
-        app: {{PROJECT_NAME}}
+        app: {{K8S_NAME}}
     spec:
       containers:
-        - name: {{PROJECT_NAME}}
-          image: {{PROJECT_NAME}}:latest
+        - name: {{K8S_NAME}}
+          image: {{K8S_NAME}}:latest
           resources:
             requests:
               memory: "256Mi"
