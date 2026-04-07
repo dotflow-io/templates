@@ -1,0 +1,9 @@
+services:
+  - type: worker
+    name: {{PROJECT_NAME}}
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
