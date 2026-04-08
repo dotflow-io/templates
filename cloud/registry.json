@@ -169,6 +169,46 @@
       "name": "Terraform",
       "description": "Infrastructure as Code",
       "files": ["README.md"]
+    },
+    "cloudflare-workers": {
+      "name": "Cloudflare Workers",
+      "description": "Serverless edge compute, globally distributed",
+      "files": ["README.md"]
+    },
+    "linode": {
+      "name": "Linode (Akamai)",
+      "description": "Cloud servers and managed Kubernetes",
+      "files": ["README.md"]
+    },
+    "vultr": {
+      "name": "Vultr",
+      "description": "Cloud servers, Kubernetes, and serverless",
+      "files": ["README.md"]
+    },
+    "oracle-cloud": {
+      "name": "Oracle Cloud",
+      "description": "Container Instances and Functions with generous free tier",
+      "files": ["README.md"]
+    },
+    "civo": {
+      "name": "Civo",
+      "description": "Fast managed Kubernetes",
+      "files": ["README.md"]
+    },
+    "proxmox": {
+      "name": "Proxmox",
+      "description": "On-premise virtualization and container deployment",
+      "files": ["README.md"]
+    },
+    "k3s": {
+      "name": "K3s",
+      "description": "Lightweight Kubernetes for edge and IoT",
+      "files": ["README.md"]
+    },
+    "alibaba-cloud": {
+      "name": "Alibaba Cloud",
+      "description": "Function Compute and container service for Asia market",
+      "files": ["README.md"]
     }
   }
 }
