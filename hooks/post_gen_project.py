@@ -4,25 +4,28 @@ import json
 from pathlib import Path
 from urllib.request import urlopen
 
-CLOUD_URL = "https://raw.githubusercontent.com/dotflow-io/template/master/cloud"
+from constants import (
+    AWS_PLATFORMS,
+    BOLD,
+    CLOUD_URL,
+    CYAN,
+    GCP_PLATFORMS,
+    RESET,
+    SCHEDULED_PLATFORMS,
+)
 
 CLOUD = "{{ cookiecutter.cloud }}"
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
 MODULE_NAME = "{{ cookiecutter.module_name }}"
 
-AWS_PLATFORMS = {
-    "lambda", "lambda-scheduled", "lambda-s3-trigger",
-    "lambda-sqs-trigger", "lambda-api-trigger", "ecs", "ecs-scheduled",
-}
-GCP_PLATFORMS = {"cloud-run", "cloud-run-scheduled"}
-SCHEDULED_PLATFORMS = {"lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled"}
-
 
 def prompt(label: str, default: str = "") -> str:
     if default:
-        value = input(f"    \033[1m{label}\033[0m (\033[36m{default}\033[0m): ").strip()
+        value = input(
+            f"    {BOLD}{label}{RESET} ({CYAN}{default}{RESET}): "
+        ).strip()
         return value or default
-    return input(f"    \033[1m{label}\033[0m: ").strip()
+    return input(f"    {BOLD}{label}{RESET}: ").strip()
 
 
 def ask_inputs() -> dict:
