@@ -20,9 +20,9 @@ SCHEDULED_PLATFORMS = {"lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled
 
 def prompt(label: str, default: str = "") -> str:
     if default:
-        value = input(f"  \033[1m{label}\033[0m (\033[36m{default}\033[0m): ").strip()
+        value = input(f"    \033[1m{label}\033[0m (\033[36m{default}\033[0m): ").strip()
         return value or default
-    return input(f"  \033[1m{label}\033[0m: ").strip()
+    return input(f"    \033[1m{label}\033[0m: ").strip()
 
 
 def ask_inputs() -> dict:
