@@ -15,7 +15,8 @@ Resources:
           Type: S3
           Properties:
             Bucket: !Ref SourceBucket
-            Events: s3:ObjectCreated:*
+            Events:
+              - s3:ObjectCreated:*
     Metadata:
       DockerTag: latest
       DockerContext: .
