@@ -40,3 +40,19 @@ Deploy your dotflow pipelines to any major cloud provider. Choose a target platf
 | `railway` | <img alt="Railway" src="https://cdn.simpleicons.org/railway" width="18" /> | Railway | :soon: | — |
 | `render` | <img alt="Render" src="https://cdn.simpleicons.org/render" width="18" /> | Render | :soon: | — |
 | `digital-ocean` | <img alt="DigitalOcean" src="https://cdn.simpleicons.org/digitalocean" width="18" /> | DigitalOcean App Platform | :soon: | — |
+| `step-functions` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> | AWS Step Functions | :soon: | — |
+| `aws-batch` | <img alt="AWS" src="https://cdn.simpleicons.org/amazonaws" width="18" /> | AWS Batch | :soon: | — |
+| `app-runner` | <img alt="AWS" src="https://cdn.simpleicons.org/amazonaws" width="18" /> | AWS App Runner | :soon: | — |
+| `cloud-functions` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Cloud Functions | :soon: | — |
+| `cloud-workflows` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Cloud Workflows | :soon: | — |
+| `cloud-tasks` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Cloud Tasks | :soon: | — |
+| `pubsub-trigger` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Pub/Sub Trigger | :soon: | — |
+| `azure-container-instances` | <img alt="Microsoft Azure" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" width="18" /> | Azure Container Instances | :soon: | — |
+| `azure-logic-apps` | <img alt="Microsoft Azure" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" width="18" /> | Azure Logic Apps | :soon: | — |
+| `azure-queue-trigger` | <img alt="Microsoft Azure" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" width="18" /> | Azure Functions + Queue Trigger | :soon: | — |
+| `github-actions` | <img alt="GitHub Actions" src="https://cdn.simpleicons.org/githubactions" width="18" /> | GitHub Actions | :soon: | — |
+| `gitlab-ci` | <img alt="GitLab" src="https://cdn.simpleicons.org/gitlab" width="18" /> | GitLab CI | :soon: | — |
+| `vercel` | <img alt="Vercel" src="https://cdn.simpleicons.org/vercel" width="18" /> | Vercel | :soon: | — |
+| `coolify` | <img alt="Coolify" src="https://cdn.simpleicons.org/coolify" width="18" /> | Coolify | :soon: | — |
+| `nomad` | <img alt="HashiCorp" src="https://cdn.simpleicons.org/hashicorp" width="18" /> | HashiCorp Nomad | :soon: | — |
+| `terraform` | <img alt="Terraform" src="https://cdn.simpleicons.org/terraform" width="18" /> | Terraform | :soon: | — |

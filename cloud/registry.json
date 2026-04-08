@@ -89,6 +89,86 @@
       "name": "DigitalOcean App Platform",
       "description": "Dockerfile and app.yaml for DigitalOcean App Platform deployment",
       "files": ["Dockerfile", "app.yaml"]
+    },
+    "step-functions": {
+      "name": "AWS Step Functions",
+      "description": "State machine with Lambda tasks via SAM",
+      "files": ["README.md"]
+    },
+    "aws-batch": {
+      "name": "AWS Batch",
+      "description": "Fargate batch job definition for heavy workloads",
+      "files": ["README.md"]
+    },
+    "app-runner": {
+      "name": "AWS App Runner",
+      "description": "Serverless container service with minimal config",
+      "files": ["README.md"]
+    },
+    "cloud-functions": {
+      "name": "Google Cloud Functions",
+      "description": "Serverless function with HTTP trigger",
+      "files": ["README.md"]
+    },
+    "cloud-workflows": {
+      "name": "Google Cloud Workflows",
+      "description": "Orchestration workflow definition",
+      "files": ["README.md"]
+    },
+    "cloud-tasks": {
+      "name": "Google Cloud Tasks",
+      "description": "HTTP task queue with Cloud Run backend",
+      "files": ["README.md"]
+    },
+    "pubsub-trigger": {
+      "name": "Google Pub/Sub Trigger",
+      "description": "Cloud Run triggered by Pub/Sub messages",
+      "files": ["README.md"]
+    },
+    "azure-container-instances": {
+      "name": "Azure Container Instances",
+      "description": "One-shot container execution",
+      "files": ["README.md"]
+    },
+    "azure-logic-apps": {
+      "name": "Azure Logic Apps",
+      "description": "Orchestration workflow with HTTP trigger",
+      "files": ["README.md"]
+    },
+    "azure-queue-trigger": {
+      "name": "Azure Functions + Queue Trigger",
+      "description": "Azure Function triggered by Storage Queue messages",
+      "files": ["README.md"]
+    },
+    "github-actions": {
+      "name": "GitHub Actions",
+      "description": "CI/CD workflow with schedule and manual trigger",
+      "files": ["README.md"]
+    },
+    "gitlab-ci": {
+      "name": "GitLab CI",
+      "description": "CI/CD pipeline with schedule and manual trigger",
+      "files": ["README.md"]
+    },
+    "vercel": {
+      "name": "Vercel",
+      "description": "Serverless function via HTTP endpoint",
+      "files": ["README.md"]
+    },
+    "coolify": {
+      "name": "Coolify",
+      "description": "Self-hosted PaaS deployment via Docker",
+      "files": ["README.md"]
+    },
+    "nomad": {
+      "name": "HashiCorp Nomad",
+      "description": "Batch job definition for Nomad orchestrator",
+      "files": ["README.md"]
+    },
+    "terraform": {
+      "name": "Terraform",
+      "description": "Infrastructure as Code",
+      "files": ["README.md"]
     }
   }
 }
