@@ -1,43 +1,19 @@
-# dotflow template
+# Dotflow Template
 
-This repository is a **Cookiecutter template** for generating a **dotflow** workflow project, with optional **cloud deployment scaffolding**.
+Official project template for [dotflow](https://github.com/dotflow-io/dotflow) — the lightweight Python library for execution pipelines.
 
-## Prerequisites
+## Cloud deployment
 
-- Python **>= 3.9**
-- `cookiecutter` installed (via `pipx` or `pip`)
+Deploy your dotflow pipelines to any major cloud provider. Choose a target platform during project creation and get all the infrastructure files you need — Dockerfiles, SAM templates, task definitions, deployment manifests — fully configured and ready to deploy.
 
-## Generate a project
+No manual setup. No boilerplate. Just select your cloud, fill in your credentials, and deploy.
 
-```bash
-cookiecutter https://github.com/dotflow-io/template.git
-```
+## CLI
 
-You'll be prompted for these options:
-
-| Option | Description |
-|------|-----------|
-| `project_name` | Generated project name (e.g. `my_pipeline`) |
-| `module_name` | Python module name (derived from `project_name`, with `-` replaced by `_`) |
-| `storage` | Storage backend (`default`, `file`, `s3`, `gcs`) |
-| `scheduler` | Scheduling (`none`, `cron`) |
-| `execution_mode` | Execution (`sequential`, `parallel`, `background`) |
-| `retry` | Enable retry (`no`, `yes`) |
-| `checkpoint` | Enable checkpointing (`no`, `yes`) |
-| `cloud` | Adds deployment files (`none`, `docker`, `lambda`, `lambda-scheduled`, `lambda-s3-trigger`, `lambda-sqs-trigger`, `lambda-api-trigger`, `ecs`, `ecs-scheduled`, `cloud-run`, `cloud-run-scheduled`, `kubernetes`) |
-
-After selecting a cloud platform, the hook will ask only the relevant questions (e.g. AWS Account ID for AWS platforms, GCP Project ID for GCP platforms, schedule expression for scheduled platforms).
-
-## Cloud templates
-
-When the `cloud` option is set to a value other than `none`, the post-generation hook copies the corresponding infrastructure files (e.g. `Dockerfile`, `docker-compose.yml`, `handler.py`) into the generated project root.
-
-You can also generate cloud files separately using the CLI:
-
-```bash
-dotflow cloud generate --platform lambda
-dotflow cloud list
-```
+| Command | Description |
+|---------|-------------|
+| `dotflow cloud list` | Show available deployment platforms |
+| `dotflow cloud generate --platform <name>` | Generate deployment files for your project |
 
 ### Available platforms
 
@@ -62,25 +38,3 @@ dotflow cloud list
 | `railway` | <img alt="Railway" src="https://cdn.simpleicons.org/railway" width="18" /> | Railway | :soon: | — |
 | `render` | <img alt="Render" src="https://cdn.simpleicons.org/render" width="18" /> | Render | :soon: | — |
 | `digital-ocean` | <img alt="DigitalOcean" src="https://cdn.simpleicons.org/digitalocean" width="18" /> | DigitalOcean App Platform | :soon: | — |
-
-## Next steps (inside the generated project)
-
-Run locally without Docker:
-
-```bash
-pip install -e ".[dev]"
-python -m <your_module_name>.workflow
-```
-
-Run tests:
-
-```bash
-pytest
-```
-
-## Template structure
-
-- `cookiecutter.json`: defines the prompt questions/options.
-- `{{cookiecutter.project_name}}/`: generated Python project skeleton.
-- `hooks/post_gen_project.py`: hook that downloads `cloud/` files based on the selected `cloud` option.
-- `cloud/`: catalog of platforms and available files (see `cloud/registry.json`).
