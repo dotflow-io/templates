@@ -18,6 +18,13 @@ GCP_PLATFORMS = {"cloud-run", "cloud-run-scheduled"}
 SCHEDULED_PLATFORMS = {"lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled"}
 
 
+def prompt(label: str, default: str = "") -> str:
+    if default:
+        value = input(f"  \033[1m{label}\033[0m (\033[36m{default}\033[0m): ").strip()
+        return value or default
+    return input(f"  \033[1m{label}\033[0m: ").strip()
+
+
 def ask_inputs() -> dict:
     placeholders = {
         "PROJECT_NAME": PROJECT_NAME,
@@ -27,22 +34,17 @@ def ask_inputs() -> dict:
     }
 
     if CLOUD in SCHEDULED_PLATFORMS:
-        placeholders["SCHEDULE_EXPRESSION"] = (
-            input("Schedule expression [rate(6 hours)]: ").strip()
-            or "rate(6 hours)"
+        placeholders["SCHEDULE_EXPRESSION"] = prompt(
+            "schedule_expression", "rate(6 hours)"
         )
 
     if CLOUD in AWS_PLATFORMS:
-        placeholders["AWS_ACCOUNT_ID"] = input("AWS Account ID: ").strip()
-        placeholders["AWS_REGION"] = (
-            input("AWS Region [us-east-1]: ").strip() or "us-east-1"
-        )
+        placeholders["AWS_ACCOUNT_ID"] = prompt("aws_account_id")
+        placeholders["AWS_REGION"] = prompt("aws_region", "us-east-1")
 
     if CLOUD in GCP_PLATFORMS:
-        placeholders["GCP_PROJECT_ID"] = input("GCP Project ID: ").strip()
-        placeholders["GCP_REGION"] = (
-            input("GCP Region [us-central1]: ").strip() or "us-central1"
-        )
+        placeholders["GCP_PROJECT_ID"] = prompt("gcp_project_id")
+        placeholders["GCP_REGION"] = prompt("gcp_region", "us-central1")
 
     return placeholders
 
