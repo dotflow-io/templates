@@ -48,6 +48,20 @@ Resources:
                 AssignPublicIp: ENABLED
                 Subnets:
                   - !Ref SubnetId
+                SecurityGroups:
+                  - !Ref SecurityGroup
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /ecs/{{PROJECT_NAME}}
+      RetentionInDays: 14
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Security group for {{PROJECT_NAME}} Fargate tasks"
+      VpcId: !Ref VpcId
 
   ExecutionRole:
     Type: AWS::IAM::Role
@@ -101,6 +115,9 @@ Parameters:
   SubnetId:
     Type: AWS::EC2::Subnet::Id
     Description: Subnet for Fargate tasks
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC for the security group
 
 Outputs:
   ClusterArn:
