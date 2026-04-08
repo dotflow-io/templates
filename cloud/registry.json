@@ -142,8 +142,8 @@
     },
     "github-actions": {
       "name": "GitHub Actions",
-      "description": "CI/CD workflow with schedule and manual trigger",
-      "files": ["README.md"]
+      "description": "Scheduled workflow running on GitHub Actions runner",
+      "files": [".github/workflows/dotflow.yml", "README.md"]
     },
     "gitlab-ci": {
       "name": "GitLab CI",

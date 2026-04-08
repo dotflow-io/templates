@@ -96,7 +96,9 @@ def generate_cloud_files():
         content = replace_placeholders(content, placeholders)
 
         try:
-            (project_dir / filename).write_text(content)
+            filepath = project_dir / filename
+            filepath.parent.mkdir(parents=True, exist_ok=True)
+            filepath.write_text(content)
         except OSError as err:
             print(f"  Warning: Failed to write {filename}: {err}")
 
