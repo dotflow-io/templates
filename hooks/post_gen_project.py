@@ -39,8 +39,14 @@ def ask_inputs() -> dict:
         "lambda-scheduled", "ecs-scheduled",
         "cloud-run-scheduled", "github-actions",
     }:
-        placeholders["SCHEDULE_EXPRESSION"] = prompt(
-            "cron_expression", "0 */6 * * *"
+        cron = prompt("cron_expression", "0 */6 * * *")
+        placeholders["SCHEDULE_EXPRESSION"] = (
+            _crontab_to_aws(cron)
+            if CLOUD in {
+                "lambda-scheduled",
+                "ecs-scheduled",
+            }
+            else cron
         )
 
     if CLOUD in {
@@ -66,6 +72,19 @@ def fetch_registry() -> dict:
 def fetch_file(platform: str, filename: str) -> str:
     url = f"{CLOUD_URL}/{platform}/{filename}"
     return urlopen(url, timeout=10).read().decode()
+
+
+def _crontab_to_aws(expression: str) -> str:
+    """Convert 5-field crontab to AWS EventBridge cron."""
+    parts = expression.strip().split()
+    if len(parts) != 5:
+        return expression
+    minute, hour, dom, month, dow = parts
+    if dow != "*" and dom == "*":
+        dom = "?"
+    else:
+        dow = "?"
+    return f"cron({minute} {hour} {dom} {month} {dow} *)"
 
 
 def replace_placeholders(content: str, placeholders: dict) -> str:
