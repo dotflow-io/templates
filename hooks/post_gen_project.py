@@ -36,15 +36,11 @@ def ask_inputs() -> dict:
     }
 
     if CLOUD in {
-        "lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled",
+        "lambda-scheduled", "ecs-scheduled",
+        "cloud-run-scheduled", "github-actions",
     }:
         placeholders["SCHEDULE_EXPRESSION"] = prompt(
-            "schedule_expression", "rate(6 hours)"
-        )
-
-    if CLOUD == "github-actions":
-        placeholders["SCHEDULE_EXPRESSION"] = prompt(
-            "schedule_expression", "0 */6 * * *"
+            "cron_expression", "0 */6 * * *"
         )
 
     if CLOUD in {
