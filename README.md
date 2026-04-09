@@ -13,7 +13,7 @@ Deploy your dotflow pipelines to any major cloud provider. Choose a target platf
 | `dotflow init` | Scaffold a new project (interactive) |
 | `dotflow cloud list` | Show available deployment platforms |
 | `dotflow cloud generate --platform <name>` | Generate deployment files for an existing project |
-| `dotflow deploy --platform <name> --project <name>` | Deploy to AWS (Lambda, ECS) |
+| `dotflow deploy --platform <name> --project <name>` | Deploy to AWS, GCP, Alibaba, GitHub |
 
 ---
 
@@ -29,7 +29,7 @@ Deploy your dotflow pipelines to any major cloud provider. Choose a target platf
 | `lambda-sqs-trigger` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> <img alt="Amazon SQS" src="https://api.iconify.design/logos:aws-sqs.svg" width="18" /> | AWS Lambda + SQS Trigger | `dotflow deploy` | [Guide](cloud/lambda-sqs-trigger/README.md) |
 | `lambda-api-trigger` | <img alt="AWS Lambda" src="https://www.vectorlogo.zone/logos/amazon_awslambda/amazon_awslambda-icon.svg" width="18" /> <img alt="Amazon API Gateway" src="https://api.iconify.design/logos:aws-api-gateway.svg" width="18" /> | AWS Lambda + API Gateway | `dotflow deploy` | [Guide](cloud/lambda-api-trigger/README.md) |
 | `ecs` | <img alt="Amazon ECS" src="https://www.vectorlogo.zone/logos/amazon_ecs/amazon_ecs-icon.svg" width="18" /> | AWS ECS (Fargate) | `dotflow deploy` | [Guide](cloud/ecs/README.md) |
-| `ecs-scheduled` | <img alt="Amazon ECS" src="https://www.vectorlogo.zone/logos/amazon_ecs/amazon_ecs-icon.svg" width="18" /> <img alt="Amazon EventBridge" src="https://api.iconify.design/logos:aws-eventbridge.svg" width="18" /> | AWS ECS + EventBridge | CloudFormation | [Guide](cloud/ecs-scheduled/README.md) |
+| `ecs-scheduled` | <img alt="Amazon ECS" src="https://www.vectorlogo.zone/logos/amazon_ecs/amazon_ecs-icon.svg" width="18" /> <img alt="Amazon EventBridge" src="https://api.iconify.design/logos:aws-eventbridge.svg" width="18" /> | AWS ECS + EventBridge | `dotflow deploy` | [Guide](cloud/ecs-scheduled/README.md) |
 | `cloud-run` | <img alt="Google Cloud" src="https://cdn.simpleicons.org/googlecloud" width="18" /> | Google Cloud Run | `gcloud run deploy` | [Guide](cloud/cloud-run/README.md) |
 | `cloud-run-scheduled` | <img alt="Google Cloud Run" src="https://cdn.simpleicons.org/googlecloud" width="18" /> <img alt="Cloud Scheduler" src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" width="18" /> | Cloud Run + Scheduler | `gcloud` | [Guide](cloud/cloud-run-scheduled/README.md) |
 | `kubernetes` | <img alt="Kubernetes" src="https://cdn.simpleicons.org/kubernetes" width="18" /> | Kubernetes | `kubectl apply` | [Guide](cloud/kubernetes/README.md) |
@@ -62,5 +62,5 @@ Deploy your dotflow pipelines to any major cloud provider. Choose a target platf
 | `civo` | <img alt="Civo" src="https://cdn.simpleicons.org/civo" width="18" /> | Civo | :soon: | — |
 | `proxmox` | <img alt="Proxmox" src="https://cdn.simpleicons.org/proxmox" width="18" /> | Proxmox | :soon: | — |
 | `k3s` | <img alt="K3s" src="https://cdn.simpleicons.org/k3s" width="18" /> | K3s | :soon: | — |
-| `alibaba-fc` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud Function Compute | `s deploy` | [Guide](cloud/alibaba-fc/README.md) |
-| `alibaba-fc-scheduled` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud FC + Timer Trigger | `s deploy` | [Guide](cloud/alibaba-fc-scheduled/README.md) |
+| `alibaba-fc` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud Function Compute | `dotflow deploy` | [Guide](cloud/alibaba-fc/README.md) |
+| `alibaba-fc-scheduled` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud FC + Timer Trigger | `dotflow deploy` | [Guide](cloud/alibaba-fc-scheduled/README.md) |
