@@ -38,6 +38,7 @@ def ask_inputs() -> dict:
     if CLOUD in {
         "lambda-scheduled", "ecs-scheduled",
         "cloud-run-scheduled", "github-actions",
+        "alibaba-fc-scheduled",
     }:
         cron = prompt("cron_expression", "0 */6 * * *")
         placeholders["SCHEDULE_EXPRESSION"] = (
@@ -60,6 +61,10 @@ def ask_inputs() -> dict:
     if CLOUD in {"cloud-run", "cloud-run-scheduled"}:
         placeholders["GCP_PROJECT_ID"] = prompt("gcp_project_id")
         placeholders["GCP_REGION"] = prompt("gcp_region", "us-central1")
+
+    if CLOUD in {"alibaba-fc", "alibaba-fc-scheduled"}:
+        placeholders["ALIBABA_NAMESPACE"] = prompt("alibaba_namespace")
+        placeholders["ALIBABA_REGION"] = prompt("alibaba_region", "cn-hangzhou")
 
     return placeholders
 
