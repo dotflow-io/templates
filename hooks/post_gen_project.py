@@ -27,11 +27,12 @@ def prompt(label: str, default: str = "") -> str:
 
 
 def ask_inputs() -> dict:
+    sanitized_name = PROJECT_NAME.replace("_", "-").lower()
     placeholders = {
-        "PROJECT_NAME": PROJECT_NAME,
+        "PROJECT_NAME": sanitized_name,
         "MODULE_NAME": MODULE_NAME,
-        "STACK_NAME": PROJECT_NAME.replace("_", "-"),
-        "K8S_NAME": PROJECT_NAME.replace("_", "-"),
+        "STACK_NAME": sanitized_name,
+        "K8S_NAME": sanitized_name,
     }
 
     if CLOUD in {
