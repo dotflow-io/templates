@@ -62,4 +62,6 @@ Deploy your dotflow pipelines to any major cloud provider. Choose a target platf
 | `civo` | <img alt="Civo" src="https://cdn.simpleicons.org/civo" width="18" /> | Civo | :soon: | — |
 | `proxmox` | <img alt="Proxmox" src="https://cdn.simpleicons.org/proxmox" width="18" /> | Proxmox | :soon: | — |
 | `k3s` | <img alt="K3s" src="https://cdn.simpleicons.org/k3s" width="18" /> | K3s | :soon: | — |
+| `alibaba-fc` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud Function Compute | `s deploy` | [Guide](cloud/alibaba-fc/README.md) |
+| `alibaba-fc-scheduled` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud FC + Timer Trigger | `s deploy` | [Guide](cloud/alibaba-fc-scheduled/README.md) |
 | `alibaba-cloud` | <img alt="Alibaba Cloud" src="https://cdn.simpleicons.org/alibabacloud" width="18" /> | Alibaba Cloud | :soon: | — |
