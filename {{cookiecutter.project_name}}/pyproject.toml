@@ -4,12 +4,12 @@ version = "0.1.0"
 description = ""
 requires-python = ">=3.9"
 dependencies = [
-{% if cookiecutter.storage == "s3" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev6[aws,scheduler]",
-{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev6[gcp,scheduler]",
-{% elif cookiecutter.storage == "s3" %}    "dotflow==0.15.0.dev6[aws]",
-{% elif cookiecutter.storage == "gcs" %}    "dotflow==0.15.0.dev6[gcp]",
-{% elif cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev6[scheduler]",
-{% else %}    "dotflow==0.15.0.dev6",
+{% if cookiecutter.storage == "s3" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[aws,scheduler]",
+{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[gcp,scheduler]",
+{% elif cookiecutter.storage == "s3" %}    "dotflow==0.15.0.dev7[aws]",
+{% elif cookiecutter.storage == "gcs" %}    "dotflow==0.15.0.dev7[gcp]",
+{% elif cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[scheduler]",
+{% else %}    "dotflow==0.15.0.dev7",
 {% endif %}]
 
 [project.optional-dependencies]
