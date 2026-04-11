@@ -80,13 +80,25 @@ def fetch_file(platform: str, filename: str) -> str:
     return urlopen(url, timeout=10).read().decode()
 
 
+def _fix_step(field: str) -> str:
+    """Convert */N to 0/N for AWS EventBridge compatibility."""
+    if field.startswith("*/"):
+        return "0/" + field[2:]
+    return field
+
+
 def _crontab_to_aws(expression: str) -> str:
     """Convert 5-field crontab to AWS EventBridge cron."""
     parts = expression.strip().split()
     if len(parts) != 5:
         return expression
     minute, hour, dom, month, dow = parts
-    if dow != "*" and dom == "*":
+    minute = _fix_step(minute)
+    hour = _fix_step(hour)
+    dom = _fix_step(dom)
+    month = _fix_step(month)
+    dow = _fix_step(dow)
+    if dow != "*" and dow != "?" and dom == "*":
         dom = "?"
     else:
         dow = "?"
