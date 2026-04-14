@@ -5,7 +5,7 @@ primary_region = "iad"
   dockerfile = "Dockerfile"
 
 [processes]
-  worker = "python -m {{MODULE_NAME}}.workflow"
+  worker = "dotflow start --workflow {{MODULE_NAME}}.workflow:main --mode {{EXECUTION_MODE}}"
 
 [[vm]]
   cpu_kind = "shared"
