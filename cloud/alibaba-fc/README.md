@@ -45,6 +45,6 @@ s logs --tail
 ## Important
 
 - Do not rename `handler.py` or the `handler()` function — `s.yaml` references `handler.handler`
-- Do not rename `workflow.py` or the `main()` function — `handler.py` imports it
+- Do not rename `workflow.py` or the `main()` function — `handler.py` calls `main()` which starts the workflow internally
 - The `s.yaml` has the function name, region, and container image pre-configured from cookiecutter
 - To add triggers (HTTP, timer, OSS, etc.), edit the `triggers` section in `s.yaml`

@@ -40,7 +40,7 @@ aws logs get-log-events --log-group-name /ecs/<project_name> \
 
 ## Important
 
-- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` CMD depends on it
+- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` runs `dotflow start --workflow <module>.workflow:main`
 - The schedule expression in `template.yaml` uses AWS EventBridge syntax
 - Edit `aws_account_id` and `aws_region` in `template.yaml` before deploying
 - The ECS task runs on Fargate and stops after the workflow completes

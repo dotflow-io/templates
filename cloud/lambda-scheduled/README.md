@@ -35,6 +35,6 @@ sam logs --stack-name <project_name> --tail
 ## Important
 
 - Do not rename `handler.py` or the `handler()` function — the `Dockerfile` CMD is `handler.handler`
-- Do not rename `workflow.py` or the `main()` function — `handler.py` imports it
+- Do not rename `workflow.py` or the `main()` function — `handler.py` calls `main()` which starts the workflow internally
 - The schedule expression in `template.yaml` uses AWS EventBridge syntax (e.g. `rate(6 hours)`, `cron(0 12 * * ? *)`)
 - The `samconfig.toml` has stack name, region, and ECR repository pre-configured

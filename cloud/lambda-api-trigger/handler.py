@@ -11,5 +11,5 @@ def handler(event, context):
     body = json.loads(event.get("body") or "{}")
     print(f"Received payload: {body}")
 
-    result = main()
+    main()
     return {"statusCode": 200, "body": json.dumps({"status": "workflow executed"})}

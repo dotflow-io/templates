@@ -45,6 +45,6 @@ sam logs --stack-name <project_name> --tail
 ## Important
 
 - Do not rename `handler.py` or the `handler()` function — the `Dockerfile` CMD is `handler.handler`
-- Do not rename `workflow.py` or the `main()` function — `handler.py` imports it
+- Do not rename `workflow.py` or the `main()` function — `handler.py` calls `main()` which starts the workflow internally
 - The API Gateway URL is shown in the CloudFormation outputs after deploy
 - The `samconfig.toml` has stack name, region, and ECR repository pre-configured

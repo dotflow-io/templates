@@ -16,7 +16,7 @@ A workflow built with [dotflow](https://github.com/dotflow-io/dotflow).
 
 ```bash
 pip install -e ".[dev]"
-python -m {{ cookiecutter.module_name }}.workflow
+dotflow start --workflow {{ cookiecutter.module_name }}.workflow:main --mode {{ cookiecutter.execution_mode }}
 ```
 
 ## Running Tests

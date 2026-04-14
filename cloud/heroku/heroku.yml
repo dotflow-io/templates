@@ -5,6 +5,9 @@ build:
 run:
   worker:
     command:
-      - python
-      - -m
-      - {{MODULE_NAME}}.workflow
+      - dotflow
+      - start
+      - --workflow
+      - {{MODULE_NAME}}.workflow:main
+      - --mode
+      - {{EXECUTION_MODE}}

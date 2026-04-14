@@ -56,7 +56,7 @@ The timer trigger uses **cron expressions** (China Standard Time — UTC+8):
 ## Important
 
 - Do not rename `handler.py` or the `handler()` function — `s.yaml` references `handler.handler`
-- Do not rename `workflow.py` or the `main()` function — `handler.py` imports it
+- Do not rename `workflow.py` or the `main()` function — `handler.py` calls `main()` which starts the workflow internally
 - The `s.yaml` has the function name, region, container image, and schedule pre-configured from cookiecutter
 - Timer triggers use China Standard Time (CST/UTC+8) by default
 - To change the schedule after deploy, edit `cronExpression` in `s.yaml` and run `s deploy` again

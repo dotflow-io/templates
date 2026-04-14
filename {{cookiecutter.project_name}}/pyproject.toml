@@ -1,15 +1,17 @@
+{%- set scheduled_clouds = ["dotflow-cloud", "lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled", "alibaba-fc-scheduled", "github-actions"] -%}
+{%- set scheduler = "none" if cookiecutter.cloud in scheduled_clouds else cookiecutter.scheduler -%}
 [project]
 name = "{{ cookiecutter.project_name }}"
 version = "0.1.0"
 description = ""
 requires-python = ">=3.9"
 dependencies = [
-{% if cookiecutter.storage == "s3" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[aws,scheduler]",
-{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[gcp,scheduler]",
-{% elif cookiecutter.storage == "s3" %}    "dotflow==0.15.0.dev7[aws]",
-{% elif cookiecutter.storage == "gcs" %}    "dotflow==0.15.0.dev7[gcp]",
-{% elif cookiecutter.scheduler == "cron" %}    "dotflow==0.15.0.dev7[scheduler]",
-{% else %}    "dotflow==0.15.0.dev7",
+{% if cookiecutter.storage == "s3" and scheduler == "cron" %}    "dotflow==1.0.0.dev3[aws,scheduler]",
+{% elif cookiecutter.storage == "gcs" and scheduler == "cron" %}    "dotflow==1.0.0.dev3[gcp,scheduler]",
+{% elif cookiecutter.storage == "s3" %}    "dotflow==1.0.0.dev3[aws]",
+{% elif cookiecutter.storage == "gcs" %}    "dotflow==1.0.0.dev3[gcp]",
+{% elif scheduler == "cron" %}    "dotflow==1.0.0.dev3[scheduler]",
+{% else %}    "dotflow==1.0.0.dev3",
 {% endif %}]
 
 [project.optional-dependencies]
