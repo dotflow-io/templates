@@ -6,5 +6,5 @@ from {{MODULE_NAME}}.workflow import main
 
 
 def handler(event, context):
-    result = main()
+    main()
     return {"statusCode": 200, "body": "workflow executed"}
