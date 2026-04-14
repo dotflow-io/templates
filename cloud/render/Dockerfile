@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -e .
 
-CMD ["python", "-m", "{{MODULE_NAME}}.workflow"]
+CMD ["dotflow", "start", "--workflow", "{{MODULE_NAME}}.workflow:main", "--mode", "{{EXECUTION_MODE}}"]
