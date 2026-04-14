@@ -53,7 +53,7 @@ aws logs get-log-events --log-group-name /ecs/<project_name> \
 
 ## Important
 
-- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` CMD depends on it
+- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` runs `dotflow start --workflow <module>.workflow:main`
 - The `task-definition.json` references the ECR image URI, `executionRoleArn`, and CloudWatch log group — do not change these unless you also update the corresponding AWS resources
 - The `aws_account_id` and `aws_region` must match your actual AWS account and region
 - Create the CloudWatch log group before running the task, otherwise the container will fail to start
