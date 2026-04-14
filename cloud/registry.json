@@ -5,6 +5,11 @@
       "description": "Dockerfile and docker-compose for local or any container runtime",
       "files": ["Dockerfile", "docker-compose.yml", "README.md"]
     },
+    "dotflow-cloud": {
+      "name": "Dotflow Cloud",
+      "description": "Managed dotflow runtime with workflow factory entrypoint (dotflow start --workflow)",
+      "files": ["README.md"]
+    },
     "lambda": {
       "name": "AWS Lambda",
       "description": "Dockerfile, handler.py, and SAM template for AWS Lambda",
