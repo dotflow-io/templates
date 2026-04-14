@@ -11,6 +11,7 @@ CLOUD_URL = (
 CLOUD = "{{ cookiecutter.cloud }}"
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
 MODULE_NAME = "{{ cookiecutter.module_name }}"
+EXECUTION_MODE = "{{ cookiecutter.execution_mode }}"
 
 BOLD = "\033[1m"
 CYAN = "\033[36m"
@@ -33,6 +34,7 @@ def ask_inputs() -> dict:
         "MODULE_NAME": MODULE_NAME,
         "STACK_NAME": sanitized_name,
         "K8S_NAME": sanitized_name,
+        "EXECUTION_MODE": EXECUTION_MODE,
     }
 
     if CLOUD in {
