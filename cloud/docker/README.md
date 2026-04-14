@@ -15,5 +15,5 @@ docker compose up
 
 ## Important
 
-- Do not rename the `workflow.py` module or the `main()` function — the `Dockerfile` CMD depends on it
+- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` runs `dotflow start --workflow <module>.workflow:main`
 - The `docker-compose.yml` uses the `project_name` as container name
