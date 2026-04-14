@@ -35,7 +35,7 @@ gcloud logging read "resource.type=cloud_run_revision AND resource.labels.servic
 
 ## Important
 
-- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` CMD depends on it
+- Do not rename `workflow.py` or the `main()` function — the `Dockerfile` runs `dotflow start --workflow <module>.workflow:main`
 - The `cloudbuild.yaml` references `gcp_project_id` and `gcp_region` — these must match your GCP project
 - Replace `<cloud_run_url>` with the actual URL from the `gcloud run deploy` output
 - The scheduler uses OIDC authentication to invoke the Cloud Run service
