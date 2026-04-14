@@ -1,3 +1,6 @@
+{%- set scheduled_clouds = ["dotflow-cloud", "lambda-scheduled", "ecs-scheduled", "cloud-run-scheduled", "alibaba-fc-scheduled", "github-actions"] -%}
+{%- set scheduler = "none" if cookiecutter.cloud in scheduled_clouds else cookiecutter.scheduler -%}
+{%- set needs_internal_start = cookiecutter.cloud in ["lambda", "lambda-scheduled", "lambda-s3-trigger", "lambda-sqs-trigger", "lambda-api-trigger", "alibaba-fc", "alibaba-fc-scheduled"] -%}
 {% if cookiecutter.checkpoint == "yes" -%}
 from uuid import uuid4
 {% endif -%}
@@ -9,25 +12,25 @@ from dotflow.providers import StorageS3
 {% elif cookiecutter.storage == "gcs" -%}
 from dotflow.providers import StorageGCS
 {% endif -%}
-{% if cookiecutter.scheduler == "cron" -%}
+{% if scheduler == "cron" -%}
 from dotflow.providers import SchedulerCron
 {% endif %}
 from {{ cookiecutter.module_name }}.actions import step_one, step_two
 
-{% if cookiecutter.storage == "default" and cookiecutter.scheduler == "none" -%}
+{% if cookiecutter.storage == "default" and scheduler == "none" -%}
 config = Config()
-{% elif cookiecutter.storage == "default" and cookiecutter.scheduler == "cron" -%}
+{% elif cookiecutter.storage == "default" and scheduler == "cron" -%}
 config = Config(
     scheduler=SchedulerCron(cron="*/5 * * * *"),
 )
-{% elif cookiecutter.storage == "file" and cookiecutter.scheduler == "none" -%}
+{% elif cookiecutter.storage == "file" and scheduler == "none" -%}
 config = Config(storage=StorageFile())
-{% elif cookiecutter.storage == "file" and cookiecutter.scheduler == "cron" -%}
+{% elif cookiecutter.storage == "file" and scheduler == "cron" -%}
 config = Config(
     storage=StorageFile(),
     scheduler=SchedulerCron(cron="*/5 * * * *"),
 )
-{% elif cookiecutter.storage == "s3" and cookiecutter.scheduler == "none" -%}
+{% elif cookiecutter.storage == "s3" and scheduler == "none" -%}
 config = Config(
     storage=StorageS3(
         bucket="my-dotflow-bucket",
@@ -35,7 +38,7 @@ config = Config(
         region="us-east-1",
     )
 )
-{% elif cookiecutter.storage == "s3" and cookiecutter.scheduler == "cron" -%}
+{% elif cookiecutter.storage == "s3" and scheduler == "cron" -%}
 config = Config(
     storage=StorageS3(
         bucket="my-dotflow-bucket",
@@ -44,7 +47,7 @@ config = Config(
     ),
     scheduler=SchedulerCron(cron="*/5 * * * *"),
 )
-{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "none" -%}
+{% elif cookiecutter.storage == "gcs" and scheduler == "none" -%}
 config = Config(
     storage=StorageGCS(
         bucket="my-dotflow-bucket",
@@ -52,7 +55,7 @@ config = Config(
         project="my-gcp-project",
     )
 )
-{% elif cookiecutter.storage == "gcs" and cookiecutter.scheduler == "cron" -%}
+{% elif cookiecutter.storage == "gcs" and scheduler == "cron" -%}
 config = Config(
     storage=StorageGCS(
         bucket="my-dotflow-bucket",
@@ -63,7 +66,7 @@ config = Config(
 )
 {% endif %}
 
-def main():
+def main() -> DotFlow:
 {%- if cookiecutter.checkpoint == "yes" %}
     workflow = DotFlow(config=config, workflow_id=uuid4())
 {%- else %}
@@ -72,22 +75,11 @@ def main():
 
     workflow.task.add(step=step_one)
     workflow.task.add(step=step_two)
-
-{%- if cookiecutter.scheduler == "cron" and cookiecutter.checkpoint == "yes" %}
-    workflow.schedule(mode="{{ cookiecutter.execution_mode }}", resume=True)
-{%- elif cookiecutter.scheduler == "cron" %}
-    workflow.schedule(mode="{{ cookiecutter.execution_mode }}")
-{%- elif cookiecutter.checkpoint == "yes" %}
+{% if needs_internal_start %}
+{%- if cookiecutter.checkpoint == "yes" %}
     workflow.start(mode="{{ cookiecutter.execution_mode }}", resume=True)
 {%- else %}
     workflow.start(mode="{{ cookiecutter.execution_mode }}")
 {%- endif %}
-
-    for task in workflow.result_task():
-        print(f"Task {task.task_id}: {task.status}")
-
+{% endif %}
     return workflow
-
-
-if __name__ == "__main__":
-    main()
